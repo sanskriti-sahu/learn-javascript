@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> timer</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        
+        canvas {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="asteroids" width="300" height="300"> </canvas>
+</body>
+<script>
+    var canvas = document.getElementById("asteroids");
+    var context = canvas.getContext('2d');
+    context.strokeStyle = "red";
+    context.lineWidth = 5;
+    context.fillStyle = "dimgrey";
+    context.rect(50, 50, 100, 100);
+    context.fill();
+    context.stroke();
+    context.font = "24px Arial";
+    context.strokeStyle = '#FF2222';
+    context.fillStyle = '#FFAAAA';
+    context.lineWidth = 0.50;
+    context.textAlign = "center";
+    let msg = "testing";
+    context.fillText(msg, 50, 90);
+    context.strokeText(msg, 50, 90);
+</script>
+
+</html>
