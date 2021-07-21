@@ -26,11 +26,12 @@
     context.strokeStyle = "green";
     var height = canvas.height;
     context.font = '10px serif';
-    context.fillStyle = 'red';
+    context.fillStyle = 'white';
     for (var y = 10; y < canvas.width; y = y + 10) {
         context.beginPath();
         if (y % 50 == 0) {
             context.lineWidth = 1;
+            context.fillText(y, 0, y);
         } else {
             context.lineWidth = 0.5;
         }
@@ -38,12 +39,11 @@
         context.lineTo(canvas.height, y);
         context.stroke();
     }
-    var bucket = 0;
-    for (var x = 10; x < canvas.width; x = x + 10) {
+    for (var x = 0; x < canvas.width; x = x + 10) {
         context.beginPath();
         if (x % 50 == 0) {
-            bucket = x;
             context.lineWidth = 1;
+            context.fillText(x, x, 10);
         } else {
             context.lineWidth = 0.5;
         }
@@ -52,7 +52,9 @@
         context.stroke();
     }
 
-    // context.fillText('Hello world', 10, 10);
+    // context.font = '10px serif';
+    //         context.fillStyle = 'white';
+    //         canvas.fillText('Hello', 20, 20);
 </script>
 
 </html>
