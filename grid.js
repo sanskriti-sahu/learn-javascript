@@ -1,4 +1,11 @@
 var canvas = document.getElementById("asteroids");
+var canvasRect = canvas.getBoundingClientRect();
+canvas.addEventListener("mousemove", function(e) {
+    //console.log("Canvas: X:" + canvasRect.left + "Y:" + canvasRect.top);
+    var canvasX = Math.round(e.clientX - canvasRect.left); // Subtract the 'left' of the canvas from the X/Y
+    var canvasY = Math.round(e.clientY - canvasRect.top);
+    console.log("X:" + canvasX + "Y:" + canvasY);
+});
 var context = canvas.getContext('2d');
 var width = canvas.width;
 context.lineWidth = 0.5;
