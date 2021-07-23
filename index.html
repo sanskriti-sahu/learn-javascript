@@ -12,12 +12,18 @@
             background-color: black;
         }
     </style>
+    <script src="grid.js"></script>
+    <script>
+    </script>
 </head>
 
-<body>
-    <canvas id="asteroids" width="300" height="300"> </canvas>
-
+<body onload="renderCanvas()">
+    <canvas id="asteroids" width="600" height="600"> </canvas>
+    <script>
+        function renderCanvas() {
+            drawGridWithCoridinate(document.getElementById("asteroids"));
+        }
+    </script>
 </body>
-<script src="grid.js"></script>
 
 </html>
