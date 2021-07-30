@@ -15,8 +15,13 @@
     </style>
 </head>
 
-<body>
+<body onload="renderCanvas()">
     <canvas id="asteroids" width="500" height="200"> </canvas>
+    <script>
+        function renderCanvas() {
+            drawGridWithCoridinate(document.getElementById("asteroids"));
+        }
+    </script>
 </body>
 <script src="grid.js">
 </script>

@@ -7,7 +7,7 @@ function drawGridWithCoridinate(canvas) {
         var canvasY = Math.round(e.clientY - canvasRect.top);
         console.log("X:" + canvasX + "Y:" + canvasY);
         var context = canvas.getContext('2d');
-        context.font = "10px Georgia";
+        context.font = "200px Georgia";
         // clear canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
         drawGrid(canvas);

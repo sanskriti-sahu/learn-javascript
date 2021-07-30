@@ -2,6 +2,9 @@
 <html>
 
 <head>
+    <title>
+        test :|
+    </title>
     <style>
         body {
             text-align: center;
@@ -9,7 +12,7 @@
         }
         
         canvas {
-            background-color: black;
+            background-color: grey;
         }
     </style>
     <script src="grid.js"></script>
@@ -23,6 +26,52 @@
         function renderCanvas() {
             drawGridWithCoridinate(document.getElementById("asteroids"));
         }
+
+        var c = document.getElementById("asteroids");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        var x = 100;
+        var y = 100;
+        var r = 50;
+
+        // draw head
+        ctx.arc(x, y, r, 0, 2 * Math.PI);
+
+        // draw vertical body line
+        ctx.moveTo(x, y + r);
+        ctx.lineTo(x, y + r + r + r);
+        // draw straiight right hand
+        ctx.moveTo(x, y + r + r);
+        ctx.lineTo(x + r, y + r + r);
+        // draw stright left hand
+        ctx.moveTo(x, y + r + r);
+        ctx.lineTo(x - r, y + r + r);
+
+        //ctx.moveTo(x, y + r + r);
+        //ctx.lineTo(x + r, y + r + r);
+        //divider#charviwashere
+        //ctx.moveTo(248, 397);
+        //ctx.lineTo(200, 350);
+        // //divider#charviwashere2
+        //ctx.moveTo(148, 399);
+        //ctx.lineTo(200, 350);
+        // //divider#charviwashere2
+        // ctx.moveTo(200, 300);
+        // ctx.lineTo(150, 300);
+        // //divider#charviwashere2
+        // ctx.moveTo(150, 300);
+        // ctx.lineTo(100, 250);
+
+
+        // //draw straight arm
+        //ctx.moveTo(200, 300);
+        //ctx.lineTo(250, 300);
+
+        // //divider#charviwashere2
+        // ctx.moveTo(250, 300);
+        // ctx.lineTo(300, 250);
+        //yay done!! time: 12:05AM
+        ctx.stroke();
     </script>
 </body>
 
