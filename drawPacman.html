@@ -3,16 +3,26 @@
 
 <head>
     <title> ＼⍩⃝／</title>
+    <script src="drawPacman.js"></script>
 </head>
 
-<body onload="drawCanvas()">
+<body>
     <canvas id="asteroids" width="600" height="600"> </canvas>
+    <script>
+        var canvas = document.getElementById("asteroids");
+        var ctx = canvas.getContext('2d');
 
-    <script src="grid.js"></script>
-    <script>
-    </script>
-    <script src="drawPacman.js"></script>
-    <script>
+        var x = 50;
+        var y = 50;
+        var r = 50;
+
+        function frame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPacman(x, y, r);
+            x += 10;
+        }
+
+        setInterval(frame, 100);
     </script>
 </body>
 

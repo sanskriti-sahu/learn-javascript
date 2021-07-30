@@ -1,8 +1,4 @@
-function renderCanvas() {
-    drawGrid(document.getElementById("asteroids"));
-}
 var canvas = document.getElementById("asteroids");
-var ctx = canvas.getContext('2d');
 
 function drawPacman(x, y, r) {
     var canvas = document.getElementById("asteroids");
@@ -20,6 +16,7 @@ function drawPacman(x, y, r) {
 }
 
 function drawRandomPacmans() {
+    var ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < 100; i++) {
         var randomX = Math.random();
@@ -32,6 +29,4 @@ function drawRandomPacmans() {
     }
 }
 
-
 //drawRandomPacmans();
-setInterval(drawRandomPacmans, 10);

@@ -1,4 +1,5 @@
 function drawhuman(canvas, x, y, r) {
+    var canvas = document.getElementById("asteroids");
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
 
@@ -26,4 +27,8 @@ function drawhuman(canvas, x, y, r) {
     ctx.lineTo(x - r, y + r * 5);
 
     ctx.stroke();
+
+
 }
+
+// setInterval(drawhuman, 10);
