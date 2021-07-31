@@ -30,21 +30,3 @@ function drawhuman(canvas, x, y, r) {
 
 
 }
-
-function randomHuman() {
-    var canvas = document.getElementById("asteroids");
-    var ctx = canvas.getContext('2d');
-
-    for (var i = 0; i < 600; i++) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        var randomX = Math.random();
-        var randomY = Math.random();
-        var randomR = Math.random();
-        var randomW = randomX * canvas.width;
-        var randomH = randomY * canvas.height;
-        var randomRa = randomR * 50;
-        drawhuman(canvas, randomW, randomH, randomRa);
-    }
-}
-
-// setInterval(drawhuman, 10);
