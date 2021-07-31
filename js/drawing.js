@@ -1,5 +1,4 @@
 function drawhuman(canvas, x, y, r) {
-    var canvas = document.getElementById("asteroids");
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
 
@@ -31,8 +30,7 @@ function drawhuman(canvas, x, y, r) {
 
 }
 
-function drawPacman(x, y, r) {
-    var canvas = document.getElementById("asteroids");
+function drawPacman(canvas, x, y, r) {
     var ctx = canvas.getContext('2d');
     ctx.beginPath();
     ctx.arc(x, y, r, 0.2 * Math.PI, 1.8 * Math.PI);
@@ -46,8 +44,7 @@ function drawPacman(x, y, r) {
 
 }
 
-function drawRandomPacmans() {
-    var canvas = document.getElementById("asteroids");
+function drawRandomPacmans(canvas) {
     var ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < 100; i++) {
@@ -57,6 +54,6 @@ function drawRandomPacmans() {
         var randomWid = randomX * canvas.width;
         var randomHei = randomY * canvas.height;
         var randomRad = randomR * 50;
-        drawPacman(randomWid, randomHei, randomRad);
+        drawPacman(canvas, randomWid, randomHei, randomRad);
     }
 }

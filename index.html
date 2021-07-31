@@ -15,14 +15,64 @@
             background-color: grey;
         }
     </style>
-    <script src="grid.js"></script>
-    <script>
-    </script>
+    <script src="js/grid.js"></script>
+    <script src="js/drawing.js"></script>
 </head>
 
 <body onload="renderCanvas()">
-    <canvas id="asteroids" width="600" height="600"> </canvas>
-    <script src="drawPacman.js">
+    <canvas id="grid" width="300" height="300"> </canvas>
+    <canvas id="human" width="300" height="300"> </canvas>
+    <canvas id="pacman" width="300" height="300"> </canvas>
+    <script>
+        function renderCanvas() {
+            var gridCanvas = document.getElementById('grid');
+            drawGridWithCoridinate(gridCanvas);
+            renderPacMan();
+            renderHuman();
+        }
+
+        function renderHuman() {
+            var canvas = document.getElementById("human");
+            var ctx = canvas.getContext('2d');
+
+            var x = 0;
+            var y = 50;
+            var r = 25;
+
+            function animatehuman() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawhuman(canvas, x, y, r);
+                if (x > canvas.width) {
+                    x = 0;
+                } else {
+                    x += 10;
+                }
+            }
+
+            setInterval(animatehuman, 100);
+        }
+
+        function renderPacMan() {
+            var pacmanCanvas = document.getElementById("pacman");
+            var pacmanCanvasctx = pacmanCanvas.getContext('2d');
+
+            var px = 50;
+            var py = 50;
+            var pr = 50;
+
+            function animatePacman() {
+                pacmanCanvasctx.clearRect(0, 0, pacmanCanvas.width, pacmanCanvas.height);
+                drawPacman(pacmanCanvas, px, py, pr);
+                if (px > pacmanCanvas.width) {
+                    px = 0;
+                } else {
+                    px += 10;
+
+                }
+            }
+            setInterval(animatePacman, 100);
+
+        }
     </script>
 </body>
 
