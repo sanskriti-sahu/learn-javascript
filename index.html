@@ -62,15 +62,9 @@
 
             function animatePacman() {
                 pacmanCanvasctx.clearRect(0, 0, pacmanCanvas.width, pacmanCanvas.height);
-                drawPacman(pacmanCanvas, px, py, pr);
-                if (px > pacmanCanvas.width) {
-                    px = 0;
-                } else {
-                    px += 10;
-
-                }
+                drawRandomPacmans(pacmanCanvas, px, py, pr);
             }
-            setInterval(animatePacman, 100);
+            setInterval(animatePacman, 200);
 
         }
     </script>
