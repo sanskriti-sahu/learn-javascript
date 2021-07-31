@@ -7,37 +7,26 @@
     </script>
 </head>
 
-<body onload="drawCanvas()">
+<body>
     <canvas id="asteroids" width="600" height="600"> </canvas>
 
     <script>
-        function drawCanvas() {
-            var c = document.getElementById("asteroids");
-            drawhuman(c, 150, 150, 50);
-        }
-        //---------------------------------------------------------------------------------------
-
         var canvas = document.getElementById("asteroids");
         var ctx = canvas.getContext('2d');
 
-        function randomHuman() {
-            for (var i = 0; i < 600; i++) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                var randomX = Math.random();
-                var randomY = Math.random();
-                var randomR = Math.random();
-                var randomW = randomX * canvas.width;
-                var randomH = randomY * canvas.height;
-                var randomRa = randomR * 50;
-                drawhuman(canvas, randomW, randomH, randomRa);
-            }
+        var x = 50;
+        var y = 50;
+        var r = 50;
+
+        function animatehuman() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawhuman(canvas, x, y, r);
+            x += 10;
         }
-        setInterval(randomHuman, 10);
-        randomHuman();
+
+
+        setInterval(animatehuman, 100);
     </script>
 </body>
-
-<script>
-</script>
 
 </html>
