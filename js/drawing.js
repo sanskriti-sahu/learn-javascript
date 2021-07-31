@@ -1,6 +1,7 @@
 function drawhuman(canvas, x, y, r) {
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
+    ctx.strokeStyle = "green";
 
     // draw head
     ctx.arc(x, y, r, 0, 2 * Math.PI);

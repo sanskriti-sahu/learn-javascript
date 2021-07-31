@@ -5,7 +5,7 @@ function drawGridWithCoridinate(canvas) {
         //console.log("Canvas: X:" + canvasRect.left + "Y:" + canvasRect.top);
         var canvasX = Math.round(e.clientX - canvasRect.left); // Subtract the 'left' of the canvas from the X/Y
         var canvasY = Math.round(e.clientY - canvasRect.top);
-        console.log("X:" + canvasX + "Y:" + canvasY);
+        //console.log("X:" + canvasX + "Y:" + canvasY);
         var context = canvas.getContext('2d');
         context.font = "200px Georgia";
         // clear canvas

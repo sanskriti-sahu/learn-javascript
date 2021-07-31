@@ -12,7 +12,7 @@
         }
         
         canvas {
-            background-color: grey;
+            background-color: black;
         }
     </style>
     <script src="js/grid.js"></script>
@@ -25,10 +25,14 @@
     <canvas id="pacman" width="300" height="300"> </canvas>
     <script>
         function renderCanvas() {
-            var gridCanvas = document.getElementById('grid');
-            drawGridWithCoridinate(gridCanvas);
+            rednerGrid();
             renderPacMan();
             renderHuman();
+        }
+
+        function rednerGrid() {
+            var gridCanvas = document.getElementById('grid');
+            drawGridWithCoridinate(gridCanvas);
         }
 
         function renderHuman() {
