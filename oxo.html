@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> knot and crosses </title>
+    <style>
+        .row div {
+            padding: 50px;
+            border: 1px black solid;
+            height: 5px;
+            width: 5px;
+            float: left;
+        }
+        
+        .row {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    play tic tac toe! <br/>
+    <div>
+        <div class="row">
+            <div onclick="place(this)"></div>
+            <div onclick="place(this)"></div>
+            <div onclick="place(this)"></div>
+        </div>
+        <div class="row">
+            <div onclick="place(this)"></div>
+            <div onclick="place(this)"></div>
+            <div onclick="place(this)"></div>
+        </div>
+        <div class="row">
+            <div onclick="place(this)"></div>
+            <div onclick="place(this)"></div>
+            <div onclick="place(this)"></div>
+        </div>
+        <script>
+            var currentPlayer = "O";
+
+            function place(box) {
+                box.innerText = currentPlayer;
+                if (currentPlayer == "O") {
+                    currentPlayer = "X";
+                } else {
+                    currentPlayer = "O";
+                }
+            }
+            //place(this);
+        </script>
+    </div>
+</body>
+
+</html>
