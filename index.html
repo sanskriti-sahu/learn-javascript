@@ -5,24 +5,44 @@
     <title>
         index.html
     </title>
-    <style>
-        body {
-            text-align: center;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-        
-        canvas {
-            background-color: black;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <script src="js/grid.js"></script>
     <script src="js/drawing.js"></script>
+    <script src="js/oxo.js"></script>
 </head>
 
 <body onload="renderCanvas()">
     <canvas id="grid" width="300" height="300"> </canvas>
     <canvas id="human" width="300" height="300"> </canvas>
     <canvas id="pacman" width="300" height="300"> </canvas>
+
+    <div>
+        <h1> Play Tic-Tac-Toe!</h1>
+        <p><a href="https://www.wikihow.com/Play-Tic-Tac-Toe">How to play Tic-Tac-Toe</a></p>
+
+        <button type="button" onclick="alert('Starting Game...')"> Start a Game!</button>
+        <input type="button" onclick="location.href='file:///C:/Users/sansk/Documents/GitHub/learn-javascript/oxo.html';" value="End Game" />
+
+        <div>
+            <div class="row">
+                <div id="1_1" onclick="place(this)"></div>
+                <div id="2_1" onclick="place(this)"></div>
+                <div id="3_1" onclick="place(this)"></div>
+            </div>
+            <div class="row">
+                <div id="1_2" onclick="place(this)"></div>
+                <div id="2_2" onclick="place(this)"></div>
+                <div id="3_2" onclick="place(this)"></div>
+            </div>
+            <div class="row">
+                <div id="1_3" onclick="place(this)"></div>
+                <div id="2_3" onclick="place(this)"></div>
+                <div id="3_3" onclick="place(this)"></div>
+            </div>
+
+            <script src="js/oxo.js"></script>
+        </div>
+    </div>
     <script>
         function renderCanvas() {
             rednerGrid();

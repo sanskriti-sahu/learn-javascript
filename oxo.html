@@ -3,19 +3,7 @@
 
 <head>
     <title> knot and crosses </title>
-    <style>
-        .row div {
-            padding: 50px;
-            border: 1px black solid;
-            height: 5px;
-            width: 5px;
-            float: left;
-        }
-        
-        .row {
-            clear: both;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
 
 <body>
@@ -42,50 +30,7 @@
             <div id="3_3" onclick="place(this)"></div>
         </div>
 
-        <script>
-            var currentPlayer = "O";
-            var gameOver = false;
-
-            function place(box) {
-                if (gameOver == true) {
-                    return;
-                }
-                if (box.innerText != "")
-                    return;
-                box.innerText = currentPlayer;
-                currentPlayer == "O" ? currentPlayer = "X" : currentPlayer = "O";
-            }
-
-            function checkBoard() {
-                for (var i = 1; i <= 3; i++) {
-                    if (first == "") continue;
-                    checkWinner(document.getElementById(i + "_1").innerText,
-                        document.getElementById(i + "_2").innerText,
-                        document.getElementById(i + "_3").innerText);
-                    //^^ columns(TESTED & WORKING)
-
-                    checkWinner(document.getElementById("1_" + i).innerText,
-                        document.getElementById("2_" + i).innerText,
-                        document.getElementById("3_" + i).innerText);
-                    //^^ rows(TESTED & WORKING)
-
-                    checkWinner(document.getElementById("1_1").innerText,
-                        document.getElementById("2_2").innerText,
-                        document.getElementById("3_3").innerText);
-                    checkWinner(document.getElementById("1_3").innerText,
-                        document.getElementById("2_2").innerText,
-                        document.getElementById("3_1").innerText);
-                }
-            }
-
-            function checkWinner(first, second, third) {
-                if (first != "" && first == second && first == third) {
-                    alert("winner!!");
-                    gameOver = true;
-                    return;
-                }
-            }
-        </script>
+        <script src="js/oxo.js"></script>
     </div>
 </body>
 
