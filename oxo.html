@@ -54,31 +54,35 @@
                     return;
                 box.innerText = currentPlayer;
                 currentPlayer == "O" ? currentPlayer = "X" : currentPlayer = "O";
-                checkBoard();
             }
 
             function checkBoard() {
                 for (var i = 1; i <= 3; i++) {
-                    var first = document.getElementById("1_" + i).innerText;
-                    var second = document.getElementById("2_" + i).innerText;
-                    var third = document.getElementById("3_" + i).innerText;
                     if (first == "") continue;
-                    if (first == second && first == third) {
-                        alert("winner!!");
-                        gameOver = true;
-                        return;
-                    }
+                    checkWinner(document.getElementById(i + "_1").innerText,
+                        document.getElementById(i + "_2").innerText,
+                        document.getElementById(i + "_3").innerText);
+                    //^^ columns(TESTED & WORKING)
+
+                    checkWinner(document.getElementById("1_" + i).innerText,
+                        document.getElementById("2_" + i).innerText,
+                        document.getElementById("3_" + i).innerText);
+                    //^^ rows(TESTED & WORKING)
+
+                    checkWinner(document.getElementById("1_1").innerText,
+                        document.getElementById("2_2").innerText,
+                        document.getElementById("3_3").innerText);
+                    checkWinner(document.getElementById("1_3").innerText,
+                        document.getElementById("2_2").innerText,
+                        document.getElementById("3_1").innerText);
                 }
-                for (var i = 1; i <= 3; i++) {
-                    var first = document.getElementById(i + "_1").innerText;
-                    var second = document.getElementById(i + "_2").innerText;
-                    var third = document.getElementById(i + "_3").innerText;
-                    if (first == "") continue;
-                    if (first == second && first == third) {
-                        alert("winner!!");
-                        gameOver = true;
-                        return;
-                    }
+            }
+
+            function checkWinner(first, second, third) {
+                if (first != "" && first == second && first == third) {
+                    alert("winner!!");
+                    gameOver = true;
+                    return;
                 }
             }
         </script>
