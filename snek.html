@@ -23,21 +23,41 @@
             "#                  #",
             "####################"
         ]
-        var currentYoffSet = 0;
-        var squareSize = 30;
-        for (var i = 0; i < board.length; ++i) {
-            var currentXoffSet = 0;
-            var line = board[i];
-            for (var ci = 0; ci < line.length; ++ci) {
-                console.log(line[ci]);
-                if (line[ci] == '#') {
-                    ctx.fillStyle = "black";
-                    ctx.fillRect(currentXoffSet, currentYoffSet, squareSize, squareSize);
-                }
-                currentXoffSet += squareSize;
+        var squareSize = 20;
+        var currentY = 0;
+        var person = {
+            firstName: "Sanskriti",
+            lastName: "Sahu",
+            nickName: "Charvi",
+            sayHello: function Hello() {
+                alert(person.firstName + " " + person.lastName);
             }
-            currentYoffSet += squareSize;
-        }
+
+        };
+
+        person.sayHello();
+
+
+
+
+
+
+
+        // function drawBoard() {
+        //     for (var i = 0; i < board.length; ++i) {
+        //         var currentX = 0;
+        //         var draw = board[i];
+        //         for (var i2 = 0; i2 < draw.length; ++i2) {
+        //             if (draw[i2] == '#') {
+        //                 ctx.fillStyle = "black";
+        //                 ctx.fillRect(currentX, currentY, squareSize, squareSize);
+        //             }
+        //             currentX = currentX + squareSize;
+        //         }
+        //         currentY = currentY + squareSize;
+        //     }
+        // }
+        // drawBoard();
     </script>
 </body>
 
