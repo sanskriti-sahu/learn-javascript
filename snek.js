@@ -24,8 +24,21 @@ var snake = {
         });
     },
     move: function() {
-
+        var location = snake.nextlocation();
+        snake.parts.unshift(location);
+        snake.parts.pop();
+    },
+    nextlocation: function() {
+        var snakeHead = snake.parts[0];
+        var targetX = snakeHead.x;
+        var targetY = snakeHead.y;
+        targetY = snake.facing == "N" ? targetY - 1 : targetY;
+        targetY = snake.facing == "S" ? targetY + 1 : targetY;
+        targetX = snake.facing == "W" ? targetX - 1 : targetX;
+        targetX = snake.facing == "E" ? targetX + 1 : targetX;
+        return { x: targetX, y: targetY };
     }
+
 }
 
 var graphics = {
@@ -51,6 +64,7 @@ var graphics = {
 
     drawGame: function() {
         var ctx = graphics.canvas.getContext("2d");
+        ctx.clearRect(0, 0, graphics.canvas.width, graphics.canvas.height);
         graphics.drawBoard(ctx);
         snake.draw(ctx);
     }
@@ -74,6 +88,7 @@ var game = {
     ],
     tick: function() {
         game.tickNumber++;
+        snake.move();
         graphics.drawGame();
         console.log(game.tickNumber);
         game.timer = window.setTimeout("game.tick()", 500);
@@ -85,4 +100,5 @@ var gameControl = {
         game.tick();
     }
 };
+
 gameControl.startGame();
