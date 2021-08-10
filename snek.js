@@ -1,5 +1,5 @@
+var squareSize = 35;
 var snake = {
-    squareSize: 25,
     parts: [{
             x: 3,
             y: 2
@@ -17,10 +17,10 @@ var snake = {
     canvas: document.getElementById("canvas"),
     draw: function(ctx) {
         snake.parts.forEach(function drawPart(part) {
-            var xLocation = part.x * snake.squareSize;
-            var yLocation = part.y * snake.squareSize;
+            var xLocation = part.x * squareSize;
+            var yLocation = part.y * squareSize;
             ctx.fillStyle = snake.color;
-            ctx.fillRect(xLocation, yLocation, snake.squareSize, snake.squareSize);
+            ctx.fillRect(xLocation, yLocation, squareSize, squareSize);
         });
     },
     move: function() {
@@ -45,7 +45,6 @@ var snake = {
 
 var graphics = {
     canvas: document.getElementById("canvas"),
-    squareSize: 30,
     drawBoard: function(ctx) {
         //var ctx = graphics.canvas.getContext("2d");
         var currentY = 0;
@@ -55,12 +54,15 @@ var graphics = {
             line.forEach(function checkCharac(character) {
                 if (character == '#') {
                     ctx.fillStyle = "black";
-                    ctx.fillRect(currentX, currentY, graphics.squareSize, graphics.squareSize);
+                    ctx.fillRect(currentX, currentY, squareSize, squareSize);
+                } else {
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(currentX, currentY, squareSize, squareSize);
                 }
 
-                currentX = currentX + graphics.squareSize;
+                currentX = currentX + squareSize;
             });
-            currentY = currentY + graphics.squareSize;
+            currentY = currentY + squareSize;
         });
     },
 
@@ -78,20 +80,24 @@ var game = {
     tickNumber: 0,
     timer: null,
     board: [
-        "####################",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "#                  #",
-        "####################"
+        "########################",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "#                      #",
+        "########################"
     ],
     tick: function() {
         game.tickNumber++;
@@ -101,13 +107,7 @@ var game = {
         game.timer = window.setTimeout("game.tick()", 500);
     },
     isEmpty: function(loacation) {
-        // var contents = game.board[loacation.y][loacation.x];
-        // if (contents == " ") {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
-        return game.board[loacation.y][loacation.x] == ` `;
+        return game.board[loacation.y][loacation.x] == ' ';
     }
 };
 //graphics.drawBoard();
