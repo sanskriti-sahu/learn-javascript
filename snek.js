@@ -79,8 +79,11 @@ var game = {
         "####################",
         "#                  #",
         "#                  #",
+        "#                  #",
+        "#                  #",
         "#       ####       #",
         "#       ####       #",
+        "#                  #",
         "#                  #",
         "#                  #",
         "#                  #",
@@ -96,7 +99,18 @@ var game = {
 };
 //graphics.drawBoard();
 var gameControl = {
+    processInput: function(keypressed) {
+        var key = keypressed.key.toLowerCase();
+        var targetDircetion = snake.facing;
+        if (key == "w") targetDircetion = "N";
+        if (key == "a") targetDircetion = "W";
+        if (key == "s") targetDircetion = "S";
+        if (key == "d") targetDircetion = "E";
+        snake.facing = targetDircetion;
+        // game.tick;
+    },
     startGame: function() {
+        window.addEventListener("keypress", gameControl.processInput, false);
         game.tick();
     }
 };
