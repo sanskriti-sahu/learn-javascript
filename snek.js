@@ -29,6 +29,9 @@ var snake = {
             snake.parts.unshift(location);
             snake.parts.pop();
         }
+        if (game.isWall(location)) {
+            return "gameover";
+        }
     },
     nextlocation: function() {
         var snakeHead = snake.parts[0];
@@ -101,13 +104,20 @@ var game = {
     ],
     tick: function() {
         game.tickNumber++;
-        snake.move();
-        graphics.drawGame();
-        console.log(game.tickNumber);
+        var result = snake.move();
+        if (result == "gameover") {
+            alert("game over");
+            return;
+        }
         game.timer = window.setTimeout("game.tick()", 500);
+
+        graphics.drawGame();
     },
     isEmpty: function(loacation) {
         return game.board[loacation.y][loacation.x] == ' ';
+    },
+    isWall: function(loc) {
+        return game.board[loc.y][loc.x] == '#';
     }
 };
 //graphics.drawBoard();
