@@ -15,14 +15,6 @@ var snake = {
     facing: "E",
     color: "green",
     canvas: document.getElementById("canvas"),
-    draw: function(ctx) {
-        snake.parts.forEach(function drawPart(part) {
-            var xLocation = part.x * squareSize;
-            var yLocation = part.y * squareSize;
-            ctx.fillStyle = snake.color;
-            ctx.fillRect(xLocation, yLocation, squareSize, squareSize);
-        });
-    },
     move: function() {
         var location = snake.nextlocation();
         if (game.isEmpty(location)) {
@@ -31,6 +23,9 @@ var snake = {
         }
         if (game.isWall(location)) {
             return "gameover";
+        }
+        if (game.isFruit(location)) {
+            alert('Fruit');
         }
     },
     nextlocation: function() {
@@ -68,13 +63,21 @@ var graphics = {
             currentY = currentY + squareSize;
         });
     },
-
+    draw: function(ctx, source, color) {
+        source.forEach(function drawPart(part) {
+            var xLocation = part.x * squareSize;
+            var yLocation = part.y * squareSize;
+            ctx.fillStyle = color;
+            ctx.fillRect(xLocation, yLocation, squareSize, squareSize);
+        });
+    },
     drawGame: function() {
         var ctx = graphics.canvas.getContext("2d");
         ctx.clearRect(0, 0, graphics.canvas.width, graphics.canvas.height);
         graphics.drawBoard(ctx);
-        snake.draw(ctx);
-    }
+        graphics.draw(ctx, snake.parts, "green");
+        graphics.draw(ctx, game.fruit, "red");
+    },
 };
 
 var canvas = document.getElementById("canvas");
@@ -102,6 +105,9 @@ var game = {
         "#                      #",
         "########################"
     ],
+    fruit: [
+        { x: 1, y: 1 }
+    ],
     tick: function() {
         game.tickNumber++;
         var result = snake.move();
@@ -118,6 +124,16 @@ var game = {
     },
     isWall: function(loc) {
         return game.board[loc.y][loc.x] == '#';
+    },
+    isFruit: function(location) {
+        for (var fruitNumber = 0; fruitNumber < game.fruit.length; fruitNumber++) {
+            var fruit = game.fruit[fruitNumber];
+            if (location.x == fruit.x && location.y == fruit.y) {
+                game.fruit.splice(fruitNumber, 1)
+                return true;
+            }
+        }
+        return false;
     }
 };
 //graphics.drawBoard();
@@ -137,5 +153,6 @@ var gameControl = {
         game.tick();
     }
 };
+
 
 gameControl.startGame();
