@@ -20,14 +20,16 @@ function drawCircle(x, y, r) {
 var x = 250;
 var y = 250;
 var r = 50;
+var ceiling = y;
+var direction = 1;
 
 function animateCircle() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawCircle(x, y, r);
-    x += 10;
-    if (x > canvas.width) {
-        x = 0;
+    y += (direction * 10);
+    if (y >= canvas.height - r || y < ceiling) {
+        direction *= -1;
     }
-    return;
+
 }
-setInterval(animateCircle, 100);
+setInterval(animateCircle, 50);
