@@ -25,7 +25,8 @@ var snake = {
             return "gameover";
         }
         if (game.isFruit(location)) {
-            alert('Fruit');
+            snake.parts.unshift(location);
+            game.score++
         }
     },
     nextlocation: function() {
@@ -110,6 +111,9 @@ var game = {
     ],
     tick: function() {
         game.tickNumber++;
+        if (game.tickNumber % 10 == 0) {
+            game.addRandomFruit();
+        }
         var result = snake.move();
         if (result == "gameover") {
             alert("game over");
@@ -118,6 +122,14 @@ var game = {
         game.timer = window.setTimeout("game.tick()", 500);
 
         graphics.drawGame();
+    },
+    addRandomFruit: function() {
+        var randomY = Math.floor(Math.random() * game.board.length) + 0;
+        var randomX = Math.floor(Math.random() * game.board[randomY].length) + 0;
+        var randomLocation = { x: randomX, y: randomY };
+        if (game.isEmpty(randomLocation) && !game.isFruit(randomLocation)) {
+            game.fruit.push(randomLocation);
+        }
     },
     isEmpty: function(loacation) {
         return game.board[loacation.y][loacation.x] == ' ';
