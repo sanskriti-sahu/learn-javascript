@@ -27,8 +27,11 @@ function animateCircle() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawCircle(x, y, r);
     y += (direction * 10);
-    if (y >= canvas.height - r || y < ceiling) {
-        direction *= -1;
+    if (y >= canvas.height) {
+        direction = -1;
+    } else if (y < ceiling) {
+        direction = 1;
+        ceiling += 50;
     }
 
 }

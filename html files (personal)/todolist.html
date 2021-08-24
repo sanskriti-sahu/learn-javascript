@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> A simple and easy to-do list!</title>
+    <script>
+        function addItem() {
+            var newItem = document.createElement("div");
+            newItem.innerHTML = document.getElementById("box").value;
+            newItem.onclick = removeItem;
+            document.getElementById("list").appendChild(newItem);
+            saveList();
+        }
+
+        function removeItem() {
+            document.getElementById("list").removeChild(this);
+            saveList();
+        }
+
+        function saveList() {
+            localStorage.storedList = document.getElementById("list").innerHTML;
+        }
+
+        function loadList() {
+            document.getAnimations("lsit").innerHTML = localStorage.storedList;
+            for (var i = 0; i < list.children.length; i++) {
+                list.children[i].onclick = removeItem;
+            }
+        }
+    </script>
+    <style>
+        .welcome {
+            background-color: rgb(252, 196, 214);
+            color: black;
+            height: 130px;
+            font-size: 40pt;
+            text-align: center;
+        }
+        
+        input[type="button"] {
+            align-self: center;
+            background-color: rgb(253, 223, 228);
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 class="welcome"> Charvi's To-Do List</h1>
+    <h2 class="lowerText">To-Do List</h2>
+    <br/>
+    <input type="text" id="box" value="Type Here to add task" />
+    <br/>
+    <input type="button" value="Add Task" onclick="addItem();">
+    <br/>
+    <div id="list"></div>
+    <script>
+        if (localStorage.storedList) {
+            loadList();
+        }
+    </script>
+
+</body>
+
+</html>

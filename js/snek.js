@@ -86,6 +86,7 @@ var ctx = canvas.getContext("2d");
 var game = {
     tickNumber: 0,
     timer: null,
+    score: 0,
     board: [
         "########################",
         "#                      #",
@@ -116,7 +117,7 @@ var game = {
         }
         var result = snake.move();
         if (result == "gameover") {
-            alert("game over");
+            alert("game over! Player scored: " + game.score);
             return;
         }
         game.timer = window.setTimeout("game.tick()", 500);
@@ -146,6 +147,14 @@ var game = {
             }
         }
         return false;
+    },
+    isSnake: function(location) {
+        for (var snakePart = 0; snakePart < snake.parts.length; snakePart++) {
+            var parts = snake.parts[snakePart];
+            if (location.x == part.x && location.y == part.y) {
+                return true;
+            }
+        }
     }
 };
 //graphics.drawBoard();
